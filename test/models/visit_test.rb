@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: shortened_urls
+# Table name: visits
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer
-#  long_url   :string           not null
-#  short_url  :string           not null
+#  user_id    :integer          not null
+#  url_id     :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class ShortenedUrlTest < ActiveSupport::TestCase
+class VisitTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

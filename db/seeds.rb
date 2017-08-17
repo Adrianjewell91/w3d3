@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(email: "email@email.com")
+ShortenedUrl.create_and_generate(User.first, "ww.googl.com")
+Visit.record_visit!(User.first, ShortenedUrl.first)
+User.create(email: "ding@ding")
+Visit.record_visit!(User.last, ShortenedUrl.first)
