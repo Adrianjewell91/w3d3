@@ -6,6 +6,11 @@ class ShortenedUrl < ApplicationRecord
       foreign_key: :url_id,
       class_name: :Visit
 
+  has_many :unique_visitors,
+    Proc.new {distinct},
+    through: :logged_users,
+    source: :user
+
   has_many :visitors,
     through: :logged_users,
     source: :user
@@ -25,17 +30,14 @@ class ShortenedUrl < ApplicationRecord
     end
 
     def num_clicks
-      logged_users.count
+      visitors.count
     end
 
     def num_uniques
-
-      visitor_ids = visitors.map{|visitor| visitor.id}
-      visitor_ids.uniq.count
-      # visitors.inject([]) do |acc, visitor|
-      #   acc << visitor unless acc.include?(visitor)
+      unique_visitors.count
     end
 
-
+    def num_recent_uniques
+    end
 
 end
